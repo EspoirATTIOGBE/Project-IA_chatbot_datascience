@@ -1,0 +1,218 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body {
+  background-image: url("AI-chatbot.jpg");
+    background-repeat: no-repeat;
+    background-size: 1700px 695px;
+
+
+}
+#container
+{
+
+    height: 100 vh;
+    width: 100%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+
+#screen
+{
+
+    margin:30px;
+    height: 600px;
+    width: 600px;
+    border-radius: 30px;
+background-image: url("robot_allonge.jpg");
+    border-radius: 25px;
+    border: 15px solid #green;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+.top_menu {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px 0 15px;
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+}
+#header
+{
+     text-align: center;
+  color: fff;
+  font-size: 20px;
+}
+#connect{
+color:
+green}
+#messageDisplaySection
+{
+    height: 450px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    padding: 0 20px;
+    overflow-y: auto;
+}
+.chat
+{
+    min-height: 40px;
+    max-width: 60%;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+.botMessages
+{
+    background: #00203FFF;
+    color: #ADEFD1FF;
+
+}
+#messagesContainer
+{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.usersMessages
+{
+    background: #E5E5E5;
+}
+
+#userInput
+{
+border: 2px solid #a3d063;
+    height: 50px;
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    bottom: 3%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+#messages
+{
+
+    height: 50px;
+    width: 90%;
+    position: absolute;
+    left: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0px 15px;
+    font-size: 17px;
+}
+#send
+{
+
+    width: 65px;
+  height: 50px;
+   display: inline-block;
+   /*border-radius: 50px;
+    /*position: absolute;*/
+    right: 0;
+    border: 2px solid #a3d063;
+    outline: none;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 20px;
+   background-color: #a3d063;
+    cursor: pointer;
+    display: none;
+    transition: all 0.2s linear;
+    float: right;
+
+   /* width: 140px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #a3d063;
+  border: 2px solid #a3d063;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-align: center;
+  float: right;*/
+}
+.top_menu .buttons {
+  margin: 3px 0 0 20px;
+  position: absolute;
+}
+.top_menu .buttons .button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+.top_menu .buttons .button.close {
+  background-color: #f5886e;
+}
+.top_menu .buttons .button.minimize {
+  background-color: #fdbf68;
+}
+.top_menu .buttons .button.maximize {
+  background-color: #a3d063;
+}
+
+#sentimentDisplaySection{
+height: 50%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    padding: 0 20px;
+    overflow-y: auto;
+}
+#queryDisplaySection{
+height: 90%;
+    width: 30%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+
+    overflow-y: auto;
+}
+#sentimentvalue{
+height: auto;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+}
+#queryvalue{
+height: auto;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+}
+.sentiment
+{
+min-height: 40px;
+    max-width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    background: #EEE8AA;
+}
+.query
+{
+min-height: 40px;
+    max-width: 40%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    background: #E5E5E5;
+}

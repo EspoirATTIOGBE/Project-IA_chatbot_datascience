@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot de discussions en ligne</title>
+    <link rel="stylesheet" href="static/bot.css">
+    <link rel="stylesheet" href="static/jquery.min.js">
+</head>
+<body>
+
+   <div id="sentimentDisplaySection" align="right">
+    <div id="sentimentvalue">
+        <!-- bot sentiment-->
+        <h3>SENTIMENTS DES PHRASES</h3>
+     <div  class="sentiment"></div>
+    </div>
+
+ </div>
+<div id="queryDisplaySection" >
+    <div id="queryvalue">
+        <!-- bot query-->
+        <h3>REQUETES LIEES AUX PHRASES</h3>
+     <div  class="query"></div>
+    </div>
+
+ </div>
+
+
+
+    <div id="container">
+
+        <div id="screen">
+            <div class="top_menu">
+                <div class="buttons">
+                    <div class="button close"></div>
+                    <div class="button minimize"></div>
+                    <div class="button maximize"></div>
+                </div>
+                    <div id="header">Agent Espoir<div id="connect">en ligne</div> </div>
+
+            </div>
+
+            <div id="messageDisplaySection">
+                <!-- bot messages -->
+                <!-- <div class="chat botMessages">Hello there, how can I help you?</div> -->
+                <!-- usersMessages -->
+                <!-- <div id="messagesContainer">
+                <div class="chat usersMessages">I need your help to build a website.</div>
+            </div> -->
+            </div>
+
+
+            <!-- messages input field -->
+            <div id="userInput">
+
+                <input type="text" name="messages" id="messages" autocomplete="OFF" placeholder="Saisissez votre message " required>
+                <input type="submit" value="send" id="send" name="send">
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Jquery Start -->
+    <script>
+
+        $(document).ready(function(){
+            $("#messages").on("keyup",function(){
+
+                if($("#messages").val()){
+                    $("#send").css("display","block");
+                }else{
+                    $("#send").css("display","none");
+                }
+            });
+        });
+
+        // when send button clicked
+        $("#send").on("click",function(e){
+            $userMessage = $("#messages").val();
+            $appendUserMessage = '<div class="chat usersMessages">'+ $userMessage +'</div>';
+            $("#messageDisplaySection").append($appendUserMessage);
+
+            // ajax start
+            $.ajax({
+                url: "/chatbot",
+                type: "POST",
+                // sending data
+                data: {messageValue: $userMessage},
+                // response text
+                success: function(data){
+                    //show sentiment
+                    $appendBot_userinput_sentiment = '<div id="sentimentvalue"><div class="sentiment">Texte : '+$userMessage+' Sentiment : '+data.sentiment+'</div></div>';
+                    $("#sentimentDisplaySection").append($appendBot_userinput_sentiment);
+
+                    // show response
+                    $appendBotResponse = '<div id="messagesContainer"><div class="chat botMessages">'+data.response+'</div></div>';
+                    $("#messageDisplaySection").append($appendBotResponse);
+
+
+
+
+                    // show query
+                    $append_sentence_query = '<div id="queryvalue"><div class="query">'+data.query+'</div></div>';
+                    $("#queryDisplaySection").append($append_sentence_query);
+                }
+            });
+            $("#messages").val("");
+            $("#send").css("display","none");
+        });
+    </script>
+
+
+
+</body>
+</html>
